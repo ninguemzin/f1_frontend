@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   min-width: 100vw;
-  background-color: #383838;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 `;
 
 export const Form = styled.form`
@@ -15,11 +18,12 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #201d1d;
-  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5);
   width: 100%;
   max-width: 450px;
   gap: 30px 0px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
   h1 {
     color: white;
     font-size: 20px;

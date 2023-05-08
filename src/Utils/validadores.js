@@ -3,7 +3,9 @@ const validarEmail = (email) => {
 };
 
 const validarSenha = (senha) => {
-  return senha?.toString().length > 6;
+  if (typeof senha === "string" && senha) {
+    return senha.length > 6;
+  }
 };
 
 const validarNome = (nome) => {

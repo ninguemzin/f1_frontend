@@ -34,7 +34,11 @@ const Login = () => {
   };
   console.log("Form está valido", validadorInput());
   return (
-    <Container>
+    <Container
+      style={{
+        backgroundImage: `url("https://wallpaperaccess.com/full/342804.jpg")`,
+      }}
+    >
       <Form>
         <h1>Faça o seu Login 👋</h1>
         <Input
