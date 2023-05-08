@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Background = styled.div`
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  height: 100vh;
-  gap: 20px;
+  align-items: center;
+  min-height: 200vh;
+  min-width: 50vw;
+  background-repeat: repeat-y;
+  background-size: cover;
+  height: 100%;
 `;

@@ -1,12 +1,12 @@
-import React from "react";
-import { Container } from "./styles";
+import * as React from "react";
+import { Background } from "./styles";
+import ResponsiveAppBar from "../../Components/Navbar/navbar";
 
-const Home = () => {
+export default function FixedContainer() {
   return (
-    <Container>
-      <h1>HOME PAGE</h1>
-    </Container>
+    <React.Fragment>
+      <ResponsiveAppBar />
+      <Background></Background>
+    </React.Fragment>
   );
-};
-
-export default Home;
+}
