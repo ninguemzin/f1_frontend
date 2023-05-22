@@ -1,13 +1,10 @@
 import * as React from "react";
-import CarMap from "../../Components/CarMap";
 import Layout from "../Layout";
 
-function Home() {
+export default function Products() {
   return (
     <Layout>
-      <CarMap />;
+      <h1>Products</h1>
     </Layout>
   );
 }
-
-export default Home;

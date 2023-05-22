@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { NavLink } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const pages = ["Products", "Pricing", "Blog"];
@@ -25,7 +26,7 @@ const theme = createTheme({
   },
 });
 
-function ResponsiveAppBar() {
+function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -50,7 +51,8 @@ function ResponsiveAppBar() {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box
-              component="img"
+              component={NavLink}
+              to="/home"
               color="Primary"
               sx={{
                 mr: 2,
@@ -61,9 +63,12 @@ function ResponsiveAppBar() {
                 color: "inherit",
                 textDecoration: "none",
               }}
-              src="https://img.utdstc.com/icon/006/ced/006ceda7f48f7d38990a450bf0966e2b30a55f97126f9558ab1d9f2a518fdc6f"
-            />
-
+            >
+              <img
+                src="https://img.utdstc.com/icon/006/ced/006ceda7f48f7d38990a450bf0966e2b30a55f97126f9558ab1d9f2a518fdc6f"
+                alt="Logo"
+              />
+            </Box>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
@@ -94,7 +99,13 @@ function ResponsiveAppBar() {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem
+                    key={page}
+                    component={NavLink}
+                    to={`/${page.toLowerCase()}`}
+                    activeClassName="active"
+                    onClick={handleCloseNavMenu}
+                  >
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
@@ -123,6 +134,9 @@ function ResponsiveAppBar() {
               {pages.map((page) => (
                 <Button
                   key={page}
+                  component={NavLink}
+                  to={`/${page.toLowerCase()}`}
+                  activeClassName="active"
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
@@ -166,4 +180,4 @@ function ResponsiveAppBar() {
     </ThemeProvider>
   );
 }
-export default ResponsiveAppBar;
+export default Navbar;
