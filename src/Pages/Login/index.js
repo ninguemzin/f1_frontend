@@ -3,28 +3,28 @@ import { Container, Form } from "./styles";
 import Input from "../../Components/Input/index";
 import Botao from "../../Components/Buton/index";
 import { validarEmail, validarSenha } from "../../Utils/validadores";
-import UserServices from "../../Service/UserService";
-
-const userServices = new UserServices();
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
-  const [loading, setLoading] = useState();
-  const [form, setForm] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ email: "", password: "" });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       setLoading(true);
-      const response = await userServices.login(form);
-      console.log("response do Login", response);
-      if (response === true) {
-        alert("Usuario logado com sucesso");
+      const response = await axios.post("http://127.0.0.1:8000/login/", form);
+      console.log("response do Login", response.data);
+      if (response.data.success) {
+        alert("Usuário logado com sucesso");
       }
       setLoading(false);
     } catch (err) {
       alert("Algo deu errado");
     }
   };
+
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
@@ -32,14 +32,15 @@ const Login = () => {
   const validadorInput = () => {
     return validarEmail(form.email) && validarSenha(form.password);
   };
-  console.log("Form está valido", validadorInput());
+  console.log("Form está válido", validadorInput());
+
   return (
     <Container
       style={{
         backgroundImage: `url("https://wallpaperaccess.com/full/342804.jpg")`,
       }}
     >
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <h1>Faça o seu Login 👋</h1>
         <Input
           name="email"
@@ -56,12 +57,11 @@ const Login = () => {
         <Botao
           type="submit"
           text="Entrar!"
-          onClick={handleSubmit}
-          disabled={loading === true || !validadorInput()}
+          disabled={loading || !validadorInput()}
         />
         <div>
           <p>Não possui conta?</p>
-          <a>Cadastrar</a>
+          <NavLink to="/cadastro">Cadastrar</NavLink>
         </div>
       </Form>
     </Container>

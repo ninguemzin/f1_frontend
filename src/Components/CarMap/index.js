@@ -8,7 +8,7 @@ const CarMap = () => {
   useEffect(() => {
     async function fetchCars() {
       try {
-        const response = await axios.get("http://localhost:8000/home/"); // Substitua '/api/cars' pela URL correta do seu backend
+        const response = await axios.get("http://localhost:8000/home/");
         setCars(response.data.db);
       } catch (error) {
         console.error(error);

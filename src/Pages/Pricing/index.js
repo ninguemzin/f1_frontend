@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 import Layout from "../Layout";
 import axios from "axios";
-import {
-  FormWrapper,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-  ErrorMessage,
-} from "./styles";
+import { FormWrapper, FormGroup, Label, Input, Button } from "./styles";
 
-const Pricing = ({ reloadTable }) => {
+const Pricing = () => {
   const [marca, setMarca] = useState("");
-  const [ano, setAno] = useState("");
   const [modelo, setModelo] = useState("");
-  const [error, setError] = useState("");
+  const [ano, setAno] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,18 +14,16 @@ const Pricing = ({ reloadTable }) => {
     try {
       const response = await axios.post("http://localhost:8000/create/", {
         marca,
-        ano,
         modelo,
+        ano,
       });
-      console.log(response.data); // Exibe a resposta do backend após a criação do modelo
-      reloadTable();
+      console.log(response.data); 
       setMarca("");
       setAno("");
       setModelo("");
-      // Realize qualquer outra ação necessária, como redirecionar para outra página
+   
     } catch (error) {
       console.error(error);
-      setError("Erro ao criar o modelo."); // Exemplo de tratamento de erro
     }
   };
   return (
@@ -68,7 +58,6 @@ const Pricing = ({ reloadTable }) => {
             />
           </FormGroup>
           <Button type="submit">Criar Modelo</Button>
-          {error && <ErrorMessage>{error}</ErrorMessage>}
         </form>
       </FormWrapper>
     </Layout>
