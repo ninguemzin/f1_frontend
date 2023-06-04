@@ -14,7 +14,7 @@ const Login = () => {
     event.preventDefault();
     try {
       setLoading(true);
-      const response = await axios.post("http://127.0.0.1:8000/login/", form);
+      const response = await axios.post("", form);
       console.log("response do Login", response.data);
       if (response.data.success) {
         alert("Usuário logado com sucesso");

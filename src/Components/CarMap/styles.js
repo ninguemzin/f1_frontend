@@ -20,9 +20,10 @@ export const CarGrid = styled.div`
 
 export const CarCard = styled.div`
   background-color: #f1f1f1;
-  padding: 20px;
+  padding: 30px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
 
   h2 {
     margin-top: 0;
@@ -30,5 +31,22 @@ export const CarCard = styled.div`
 
   p {
     margin-bottom: 10px;
+  }
+
+  img {
+    width: 100%;
+    height: 200px; /* Defina a altura desejada para a imagem */
+    object-fit: cover; /* Ajusta a imagem para preencher o espaço mantendo a proporção */
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+`;
+
+export const CarMapWrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    padding: 0 20px;
   }
 `;
