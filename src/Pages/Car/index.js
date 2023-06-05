@@ -3,13 +3,12 @@ import CarMap from "../../Components/CarMap";
 import Layout from "../Layout";
 import CarInfo from "../../Components/CarInfo/CarInfo";
 
-function Home() {
+function Car() {
   return (
     <Layout>
-      <CarMap />
-      {/* <CarInfo /> */}
+      <CarInfo />
     </Layout>
   );
 }
 
-export default Home;
+export default Car;
