@@ -15,7 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Cars", "Sell", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const theme = createTheme({
