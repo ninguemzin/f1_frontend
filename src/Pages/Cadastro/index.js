@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Container, Form } from "./styles";
 import Input from "../../Components/Input/index";
 import Botao from "../../Components/Buton/index";
-import { validarEmail, validarSenha } from "../../Utils/validadores";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 const Cadastro = () => {
@@ -15,22 +14,21 @@ const Cadastro = () => {
   });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://127.0.0.1:8000/cadastro/",
+        "http://127.0.0.1:8000//api/register/",
         form
       );
       console.log("response do Cadastro", response.data);
       if (response.data.success) {
         setSuccessMessage("Usuário cadastrado com sucesso");
-        setTimeout(() => {
-          navigate("/login");
-        }, 2000);
+        setForm({ username: "", password: "", email: "" });
+      } else if (response.data.error) {
+        setError(response.data.error);
       }
     } catch (err) {
       setError(
@@ -45,10 +43,7 @@ const Cadastro = () => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
-  const validadorInput = () =>
-    validarEmail(form.email) &&
-    validarSenha(form.password) &&
-    form.password === form.confirmPassword;
+  const validadorInput = () => form.username !== "" && form.password;
 
   return (
     <Container
