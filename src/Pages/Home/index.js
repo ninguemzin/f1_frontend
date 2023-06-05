@@ -5,7 +5,7 @@ import Layout from "../Layout";
 function Home() {
   return (
     <Layout>
-      <CarMap />;
+      <CarMap />
     </Layout>
   );
 }
